@@ -47,9 +47,17 @@
             </div>
         </div>
         <div id="outer-box3" class="outer-box">
-            <h3>Form To Notepad</h3>
+            <h3>List To Notepad</h3>
             <div id="inner-box3" class="inner-box">
-                <h3>Coming soon</h3>
+                <form id="form-to-notepad">
+                    <label>Item To Add:</label> 
+                    <input type="text" id="inner-box3-input" class="empty-on-reload">
+                    <button id="add-list-button" class="button">Add To List</button>
+                    <ul id="input-list">
+                        <li class="box3-list-item">Example Item</li>
+                    </ul>
+                    <input id="write-to-notepad" type="submit" class="button" value="Create Text File">
+                </form>
             </div>
        </div>
         <div id="outer-box4" class="outer-box">
@@ -72,6 +80,7 @@
         </div>
     </div>
     <footer></footer>
-    <script src="main.js"></script>
+    <script src="FileSaver.js" type="module"></script>
+    <script src="main.js"></script>   
 </body>    
 </html>

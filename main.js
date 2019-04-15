@@ -125,7 +125,59 @@ async function whenWinLottery(e){
     }
 }
 
-// Logic For Form To PDF
+// Logic for the box "Form To Notepad"
+
+// Create listener for entire form
+const box3Form = document.querySelector("#form-to-notepad");
+box3Form.addEventListener('click', formNotepadMethod);
+
+function formNotepadMethod(e){
+    e.preventDefault();
+
+    if (e.target === e.currentTarget){
+        e.stopPropagation();
+        return;
+    }
+
+    // Empty field when focused
+    const target = document.getElementById(e.target.id);
+    if(!target.value.length == 0){
+        target.value = '';
+    }
+
+    // Add field value to list
+    if(target.id === 'add-list-button'){
+        
+        const currentValue = document.getElementById('inner-box3-input').value;
+        let listing = document.getElementById('input-list');
+        let li = document.createElement('li');
+        li.className = 'box3-list-item';
+        li.appendChild(document.createTextNode(currentValue));
+        listing.appendChild(li);
+
+        // let deleteButton = document.createElement('button');
+        // deleteButton.className = 'button';
+        // deleteButton.appendChild(document.createTextNode('Delete'));
+        // li.appendChild(deleteButton);
+        // listing.appendChild(li);
+    }
+
+    // Write all added lines to text file
+    if(target.id === 'write-to-notepad'){
+        let allLines = Array.from(document.getElementsByClassName('box3-list-item'))
+        let message = '';
+        allLines.forEach(function(element) {
+            message += element.textContent + " \n";
+        });
+        fileWriter(message);
+    }
+    e.stopPropagation();
+}
+
+function fileWriter(data){
+    const blob = new Blob([data], {type: 'text/plain;charset=utf-8'});
+    saveAs(blob, "form_demo.txt");
+}
 
 
 

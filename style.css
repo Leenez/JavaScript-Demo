@@ -83,6 +83,15 @@
     grid-gap: 1em;
 }
 
+#form-to-notepad{
+    display: grid;
+    grid-gap: 0.5em;
+}
+
+#added-items{
+    border-style: dashed;
+}
+
 footer {
     text-align: center;
     border-style: solid;
